@@ -10,6 +10,8 @@ gem 'rack', github: "rack/rack"
 gem 'sqlite3'
 gem 'active_model_serializers', '~> 0.10.0.rc2'
 
+gem 'acts_as_commentable'
+
 group :development, :test do
   gem 'byebug'
 end
