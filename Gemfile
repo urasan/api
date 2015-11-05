@@ -11,6 +11,7 @@ gem 'pg'
 gem 'active_model_serializers', '~> 0.10.0.rc2'
 
 gem 'acts_as_commentable'
+gem 'activerecord-reputation-system'
 
 group :development, :test do
   gem 'byebug'
