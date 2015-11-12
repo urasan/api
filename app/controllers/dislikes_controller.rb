@@ -1,5 +1,5 @@
 class DislikesController < ApplicationController
-  before_action :find_or_create_message, only: %w(create count)
+  before_action :find_or_create_message, only: %w(create)
 
   def create
     user = User.find_or_create_by(identifier: params[:user_id])
@@ -7,10 +7,6 @@ class DislikesController < ApplicationController
     @message.add_evaluation(:dislike, 1, user)
 
     return head(:ok)
-  end
-
-  def count
-    render json: {count: @message.reputation_for(:dislike).to_i}
   end
 
   private
