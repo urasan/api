@@ -8,7 +8,7 @@ gem 'arel', github: "rails/arel"
 gem 'rack', github: "rack/rack"
 
 gem 'pg'
-gem 'active_model_serializers', '~> 0.10.0.rc2'
+gem 'jbuilder'
 
 gem 'acts_as_commentable'
 gem 'activerecord-reputation-system'
