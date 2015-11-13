@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151106000219) do
+ActiveRecord::Schema.define(version: 20151113064034) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,11 +31,11 @@ ActiveRecord::Schema.define(version: 20151106000219) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.integer  "identifier", limit: 8, null: false
+    t.integer  "yammer_id",  limit: 8, null: false
     t.integer  "thread_id",  limit: 8, null: false
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
-    t.index ["identifier", "thread_id"], name: "index_messages_on_identifier_and_thread_id", unique: true, using: :btree
+    t.index ["yammer_id", "thread_id"], name: "index_messages_on_yammer_id_and_thread_id", unique: true, using: :btree
   end
 
   create_table "rs_evaluations", force: :cascade do |t|

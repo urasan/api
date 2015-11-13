@@ -22,6 +22,6 @@ class DislikesController < ApplicationController
   private
 
   def find_or_create_message
-    @message = Yammer::Message.find_or_create_by(identifier: params[:message_id], thread_id: params[:thread_id])
+    @message = Yammer::Message.find_or_create_by(yammer_id: params[:message_id], thread_id: params[:thread_id])
   end
 end
