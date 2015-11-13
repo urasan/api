@@ -14,6 +14,8 @@ gem 'active_model_serializers', '~> 0.10.0.rc2'
 gem 'acts_as_commentable'
 gem 'activerecord-reputation-system'
 
+gem 'rack-cors', :require => 'rack/cors'
+
 gem 'rails_12factor', group: :production
 
 group :development, :test do
