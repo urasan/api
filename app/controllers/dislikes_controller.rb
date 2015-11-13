@@ -2,15 +2,13 @@ class DislikesController < ApplicationController
   before_action :find_or_create_message, only: %w(create index)
 
   def create
-    user = User.find_or_create_by(identifier: params[:user_id])
-
-    @message.add_evaluation(:dislike, 1, user)
+    @message.dislike!(User.find_or_create_by(identifier: params[:user_id]))
 
     return head(:ok)
   end
 
   def index
-    @dislikes = @message.evaluators_for(:dislike)
+    @dislikes = @message.dislikes
 
     render json: @dislikes
   end
