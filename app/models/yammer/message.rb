@@ -2,6 +2,8 @@ module Yammer
   class Message < ActiveRecord::Base
     has_reputation :dislike, source: :user, aggregated_by: :sum
 
+    belongs_to :thread
+
     def destroy_dislike!(user)
       delete_evaluation(:dislike, user)
     end

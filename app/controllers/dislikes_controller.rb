@@ -1,5 +1,5 @@
 class DislikesController < ApplicationController
-  before_action :find_or_create_message, only: %w(create index destroy)
+  before_action :find_or_create_thread_and_message, only: %w(create index destroy)
 
   def create
     @message.dislike!(User.find_or_create_by(identifier: params[:user_id]))
@@ -21,7 +21,9 @@ class DislikesController < ApplicationController
 
   private
 
-  def find_or_create_message
-    @message = Yammer::Message.find_or_create_by(yammer_id: params[:message_id], thread_id: params[:thread_id])
+  def find_or_create_thread_and_message
+    thread = Yammer::Thread.find_or_create_by(yammer_id: params[:thread_id])
+
+    @message = Yammer::Message.find_or_create_by(yammer_id: params[:message_id], thread: thread)
   end
 end

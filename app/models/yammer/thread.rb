@@ -1,2 +1,5 @@
-class Yammer::Thread < ActiveRecord::Base
+module Yammer
+  class Thread < ActiveRecord::Base
+    has_many :messages
+  end
 end
