@@ -1,5 +1,5 @@
 class DislikesController < ApplicationController
-  before_action :find_or_create_message, only: %w(create index)
+  before_action :find_or_create_message, only: %w(create index destroy)
 
   def create
     @message.dislike!(User.find_or_create_by(identifier: params[:user_id]))
@@ -11,6 +11,12 @@ class DislikesController < ApplicationController
     @dislikes = @message.dislikes
 
     render json: @dislikes
+  end
+
+  def destroy
+    @message.destroy_dislike!(User.find_or_create_by(identifier: params[:user_id]))
+
+    return head(:ok)
   end
 
   private
