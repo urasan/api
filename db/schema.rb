@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151113064034) do
+ActiveRecord::Schema.define(version: 20151113065152) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,6 +79,13 @@ ActiveRecord::Schema.define(version: 20151113064034) do
     t.index ["reputation_name", "target_id", "target_type"], name: "index_rs_reputations_on_reputation_name_and_target", unique: true, using: :btree
     t.index ["reputation_name"], name: "index_rs_reputations_on_reputation_name", using: :btree
     t.index ["target_id", "target_type"], name: "index_rs_reputations_on_target_id_and_target_type", using: :btree
+  end
+
+  create_table "threads", force: :cascade do |t|
+    t.integer  "yammer_id",  limit: 8, null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.index ["yammer_id"], name: "index_threads_on_yammer_id", unique: true, using: :btree
   end
 
   create_table "users", force: :cascade do |t|
