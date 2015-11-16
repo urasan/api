@@ -34,10 +34,11 @@ module Urasan
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
 
-    config.action_dispatch.default_headers = {
-      'Access-Control-Allow-Credentials' => 'true',
-      'Access-Control-Allow-Origin' => 'chrome-extension://dbkjmahdlenondbjpbedefbcmlkbicai',
-      'Access-Control-Request-Method' => '*'
-    }
+    config.middleware.insert_before ActionDispatch::Static, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*', headers: :any, methods: [:get, :post, :put, :options, :patch, :delete]
+      end
+    end
   end
 end
